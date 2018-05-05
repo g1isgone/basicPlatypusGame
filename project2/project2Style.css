@@ -91,7 +91,7 @@ td{
 
 #lowerBar{
 	background-color: rgba(255,232,117,1);
-	color: teal;
+	color: #1F2041;
 	width:1000px;
 	height: 200px;
 	display: flex;
@@ -123,4 +123,12 @@ td{
 #keyboard{
 	
 	filter: drop-shadow(4px 4px 5px gray)  ;
+}
+
+#thanks{
+	display:flex;
+	font-size: 20px; 
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 }
