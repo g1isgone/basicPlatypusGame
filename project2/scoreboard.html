@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<html>
+<head>
+<title> Score Board </title>
+<link href="project2Style.css" rel="stylesheet">
+<script type="text/javascript" src="cookie.js"></script>
+</head>
+<body onload ="changeScores()">
+	<div id = "backgroundContainer"> 
+
+		<div id = "scrBoardCon">
+			<table id = 'scoreTable'> 
+			<tr id = 'tableHead'> 
+				<th>Ranking </th>
+				<th>User Name </th>
+				<th>Score </th>
+			</tr>
+			<tr class ='scrs'>
+					<td> <div class = 'scoreLabel'> 1 </div> </td>
+					<td> <div id = "top0ScrName" >  </div> </td> 
+					<td> <div id = "top0Scr">  </div> </td>
+			</tr>
+			<tr class ='scrs'> 
+					<td> <div class = 'scoreLabel'> 2 </div> </td>
+					<td> <div id = "top1ScrName" >  </div> </td>
+					<td> <div id = "top1Scr">  </div> </td>
+		 
+			</tr>
+			<tr class ='scrs'> 
+					<td> <div class = 'scoreLabel'> 3 </div> </td>
+					<td> <div id = "top2ScrName" >  </div> </td>
+					<td> <div id = "top2Scr">  </div> </td>
+			</tr>
+
+			<tr id = 'userScore'>
+				<td> <div class = 'scoreLabel'> </div> Your Score </td>
+				<td> <div id = 'userName'> </div></td>
+				<td> <div  id = "userScr">  </div></td>
+			</tr>
+			</table>
+		</div>
+	</div>
+
+	<script>
+		console.log(document.cookie)
+		if(cookieExists('userName')){
+			document.getElementById('userName').innerText = getCookie('userName');
+		}
+		if(cookieExists('userScore')){
+			document.getElementById('userScr').innerText = getCookie('userScore');
+		}
+		function changeScores(){
+			for(var i= 0; i <3; i++){ 
+			if(cookieExists('scr'+i.toString())){
+				var score = document.getElementById("top"+i.toString()+"Scr");
+				score.innerText =  getCookie('scr'+i.toString());
+				var scoreName = document.getElementById("top"+i.toString()+"ScrName");
+				scoreName.innerText =  getCookie('scr'+i.toString()+'Name');
+			 
+			}
+		}
+		}
+
+	</script> 
+	<div id  = "lowerBar"> 
+	 </div>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Project 2</title>
+ <link href="project2Style.css" rel="stylesheet">
+<script type="text/javascript" src="cookie.js"></script>
+</head>
+<body onload ="startGame()">
+
+ 
+<div id = "customGUI"> 
+	<canvas id = "characterCanvas">	</canvas>
+	<script>
+	var platypusCharacter;
+	var shells = [];
+	var numShells = 1; 
+	var shell; 
+	var img = new Image();
+	img.src = 'shell.png'; 
+	var waterImg = new Image(); 
+	waterImg.src = 'water.jpg'; 
+	var eatenShells = []; 
+	var mySound = new Audio("crunch.mp3");
+	var startTime ;
+	var plate = new Image(); 
+	plate.src = 'cutlery.jpg'; 
+
+	function startGame(){
+		ocean.start();
+		platypusCharacter = customPlatypus(); 
+  
+		for (var i = 0; i <numShells; i++){
+			shells.push(new shellFood());
+		}
+		
+		startTime = new Date().getTime();
+	}
+
+
+	function customPlatypus() {    
+		var bodyHex = "#43D8C2"; 
+		var beakHex = "gold"; 
+		var eyeHex = "black"; 
+		var tailHex = "#835C3B"; 
+		var eyeRad = 5; 
+		var firstName = "Perry"; 
+		var lastName = "The Platypus";
+
+		if(cookieExists("bodyColor")){
+			bodyHex=getCookie("bodyColor") 
+		}
+		if(cookieExists("beakColor")){
+			beakHex = getCookie("beakColor"); 
+		}
+		if (cookieExists("eyeColor")){
+			eyeHex = getCookie("eyeColor");
+		}
+		if(cookieExists("tailColor")){
+			tailHex = getCookie("tailColor"); 
+		}
+		if(cookieExists("eyeSize")){
+			var eyeStringSize = getCookie("eyeSize"); 
+			if(eyeStringSize == "small"){
+				eyeRad = 5; 
+			}else if(eyeStringSize == "medium"){
+				eyeRad = 10; 
+			}else if (eyeStringSize == "large"){
+				eyeRad = 15; 
+			}else if (eyeStringSize == "extraLarge"){
+				eyeRad = 20; 
+			}
+		}
+		if (cookieExists("firstName")){
+			firstName = getCookie("firstName");
+		}
+		if (cookieExists("lastName")){
+			lastName = getCookie("lastName");
+		}
+		platypusCharacter = new platypus(90, 200, 300/3, 90/3, bodyHex, beakHex, eyeHex, tailHex, eyeRad/3, firstName, lastName);
+		return platypusCharacter;
+	}
+
+
+	var ocean = {
+		canvas : document.getElementById("characterCanvas"),
+		start : function() {
+			this.canvas.width = 1000;
+			this.canvas.height = 500;
+			this.context = this.canvas.getContext("2d");
+			document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+			this.context.drawImage(waterImg, 1000, 500);
+			this.context.drawImage(plate, 953, 45);
+			this.frameNo = 0;
+			  this.interval = setInterval(updateGameArea, 20);
+				window.addEventListener('keydown', function (e) {
+					ocean.key = e.keyCode;
+				})
+				window.addEventListener('keyup', function (e) {
+					ocean.key = false;
+				})
+	},		    
+	clear : function() {
+				this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+				},
+	stop: function(){
+		clearInterval(this.interval);
+	}
+	}
+		 
+
+		function shellFood(){
+			var shellXCoord = Math.random()*50;
+			this.startX = shellXCoord + 980;
+
+			this.speedX = 0;
+			this.speedY = 0;
+
+			var shellYCoord = Math.random()*500;
+			if(shellYCoord >= 440){
+				this.startY = 440; 
+			}else{
+				this.startY = shellYCoord;
+			}
+
+
+			this.height = 100; 
+			this.width = 100; 
+			// this.startY = Math.random()*ocean.canvas.height;
+
+			this.update= function(){
+				ctx = ocean.context; 
+				ctx.drawImage(img, this.startX, this.startY)
+
+			}
+
+			this.newPos = function() {
+				this.startX -= this.speedY;        
+			}
+
+		}
+		
+
+		function platypus(x, y, w, h, bodyColor, beakColor, eyeColor, tailColor, eyeSize, firstName, lastName){
+			this.startX = x;
+			this.startY = y; 
+			this.width = w; 
+			this.height = h;   
+			this.speedX = 0;
+			this.speedY = 0; 
+			this.eyeSize = eyeSize; 
+			var eyeX = this.width/4*3;
+			var eyeY = this.height/2; 
+			var tailY = this.height/2;
+			var tailX = this.width*2/3; 
+			var beakY = this.height/4*3;
+			var beakHeightY = this.height/4; 
+			var beakWidth = this.width/4; 
+
+			this.update = function(){
+				ctx = ocean.context; 
+				ctx.beginPath();
+				ctx.rect(this.startX, this.startY, this.width, this.height);//x, y,width,height
+				ctx.fillStyle = bodyColor;
+				ctx.fill();
+				ctx.beginPath();
+				ctx.arc(this.startX + eyeX, this.startY+eyeY, this.eyeSize ,0,2*Math.PI);
+				ctx.fillStyle = eyeColor;
+				ctx.fill();
+				ctx.beginPath();
+				ctx.rect(this.startX-tailX, this.startY+tailY, tailX, tailY);
+				ctx.fillStyle = tailColor;
+				ctx.fill();
+				ctx.beginPath();
+				ctx.rect(this.startX+this.width, this.startY+beakY, beakWidth, beakHeightY);
+				ctx.fillStyle = beakColor;
+				ctx.fill();
+				ctx.font= "20px Georgia";
+				ctx.fillStyle = "Black"
+
+
+			}
+			this.newPos = function() {
+				this.startY += this.speedY;        
+			}
+			
+			this.eatShell = function(food){
+		 
+				var myLeft = this.startX; 
+				var myRight = this.startX + this.width; 
+				var myTop = this.startY; 
+				var myBottom = this.startY + this.height; 
+				var foodLeft = food.startX; 
+				var foodRight = food.startX + food.width;
+				var foodTop = food.startY; 
+				var foodBottom = food.startY + food.height; 
+
+				var crash = true; 
+
+		 
+				if ((myBottom < foodTop) ||
+					   (myTop > foodBottom) ||
+					   (myRight < foodLeft) ||
+					   (myLeft > foodRight)) {
+				   crash = false;
+				}
+
+				return crash; 
+			}
+
+		}
+
+		function setScore(){
+
+			console.log(document.cookie);
+			var allScores = []; 
+
+			var userScr = eatenShells.length;
+			if(cookieExists('scr0')){
+				allScores.push({name:getCookie('scr0Name'), value:getCookie('scr0')});
+			}
+
+			if(cookieExists('scr1')){
+				allScores.push({name:getCookie('scr1Name'), value:getCookie('scr1')});
+			}
+
+			if(cookieExists('scr2')){
+				allScores.push({name:getCookie('scr2Name'), value:getCookie('scr2')});
+			}
+
+			allScores.push({name:getCookie('firstName') + " " + getCookie('lastName'), value: userScr});
+
+			var allScores = allScores.sort( function ( a, b ) { return b.value - a.value; });
+
+			var allNames = allScores.keys();
+			for(var i = 0; i < allScores.length; i++){
+				setCookie('scr'+i.toString()+'Name', allScores[i].name); 
+				setCookie('scr'+i.toString(), allScores[i].value); 				 
+			}
+
+			setCookie('userScore', userScr); 
+			setCookie('userName', getCookie('firstName') + " " + getCookie('lastName'));
+			console.log(document.cookie);			
+		 	
+		}
+		function updateGameArea() {		
+			var passedTime = new Date().getTime() - startTime; 	 
+
+			if( passedTime > 10000){
+				ocean.stop()
+				setScore();
+				// var retVal = confirm('Your Score: ' + eatenShells.length.toString() + ". Replay?" ); 
+
+				// if(retVal){
+				// 	location.reload();
+				// }else{
+				// 	window.location.href = "scoreboard.html";
+				// }
+			}
+				   
+			ocean.clear();
+
+			ocean.context.drawImage(waterImg, 0, 0, 1000, 500);
+			ocean.context.drawImage(plate,905,5, 85, 85);
+			platypusCharacter.speedX = 0;
+			platypusCharacter.speedY = 0;    
+			if (ocean.key && ocean.key == 38) {platypusCharacter.speedY = -5; }
+			if (ocean.key && ocean.key == 40) {platypusCharacter.speedY = 5; }
+			platypusCharacter.newPos();    
+			platypusCharacter.update();
+
+			ocean.frameNo += 1;
+
+
+			if (ocean.frameNo == 1 || ocean.frameNo%20 == 0) {
+				x = ocean.canvas.width;
+				y = ocean.canvas.height - 200
+				shells.push(new shellFood());
+			}
+
+			
+
+			var j = 0; 
+
+			while (j < shells.length ){
+				if(!eatenShells.includes(j)){
+					shells[j].speedY = 3; 
+					shells[j].newPos();
+					shells[j].update();
+				}else{
+					shells[j].speedY = 0; 
+					shells[j].newPos();
+					shells[j].update();
+				}
+				j++;
+				
+			}
+
+			var shellCount = shells.length; 
+		 
+			for (var shell_i = 0; shell_i < shellCount; shell_i++){ 
+
+				if(platypusCharacter.eatShell(shells[shell_i])){
+					shells[shell_i].startX = 920;
+					shells[shell_i].startY = 15; 
+					shells[shell_i].speedX = 0; 
+					shells[shell_i].newPos(); 
+					shells[shell_i].update(); 
+					mySound.play();
+					eatenShells.push(shell_i); 
+				}  	 
+			}
+			ocean.context.font= "20px Georgia";
+			ocean.context.fillStyle = "White"
+			ocean.context.fillText(eatenShells.length.toString(), 942,53);
+
+			var timeLeft = 60- Math.round(passedTime/1000); 
+			ocean.context.fillText( "Time Left: " + timeLeft.toString(), 470, 53);
+
+			ocean.context.fillText( "Hungry Platypus: " + getCookie('firstName'), 20, 53);
+			 
+		}
+
+		 
+	</script> 
+ 
+ 	<div id  = "lowerBar">		
+ 		<div id = 'instructionsCon'> 
+ 			<div id ='instructions'> Press the 'up' and 'down' arrow of your keyboard to move <div id ="charName"></div><script> var charName = getCookie('firstName') + " " + getCookie('lastName') +" "; document.getElementById("charName").innerHTML = charName; </script> up and down. Eat as many shells you can in one minute. </div>
+  			<img id = "keyboard" src = 'keyboard.png'> 
+ 		</div>
+ 		</div>
+</body>
+</html>

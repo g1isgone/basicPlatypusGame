@@ -1,0 +1,126 @@
+
+body{
+	filter: drop-shadow(8px 8px 10px gray);
+	font-family: 'Arial'; 
+}
+body, #backgroundContainer, #scoreTable{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+}
+#customChar, #characterCanvas{
+	width: 1000px;
+
+}
+
+#characterCanvas{
+	height: 500px;
+	background-color: lightgrey;
+}
+#customChar{
+ 
+	height: 200px;
+	background-color: rgba(255,232,117,1);
+	display: flex;
+	flex-direction: row; 
+}
+
+#customGui{
+	display: flex; 
+	flex: column;
+}
+
+.charProperty{
+
+	border-radius:5px;
+	color: #1F2041;
+	opacity: 0.9;
+ 	background-color: white;
+	padding: 15px;
+	margin: 22px;
+	display: flex; 
+	flex-direction: column;
+	align-items: center;
+
+}
+
+label{
+	margin-bottom: 2px;
+	font-weight: bold;
+}
+.colorOption{
+	padding:1px;
+}
+
+#backgroundContainer{
+	width: 1000px;
+	height: 500px;
+	background-color: lightgrey;
+	background-image: url("water.jpg");
+	 
+}
+
+th{
+	margin:10px;
+	padding:20px;
+ 	background-color: rgba(111,138,183, 0.5);
+ 	color: gold;
+}
+td{
+	padding: 10px;
+	text-align: center;	 
+	margin:10px;
+	background-color: rgba(202,229,255, 0.5);
+	 
+}
+
+#scoreTable{
+	border-collapse:collapse;
+	width: 800px;
+	font-family: 'Arial'; 
+	font-size: 35px;
+
+
+} 
+
+#userScore{
+	background-color: white;
+}
+
+#lowerBar{
+	background-color: rgba(255,232,117,1);
+	color: teal;
+	width:1000px;
+	height: 200px;
+	display: flex;
+	flex-direction: row; 
+	justify-content: center;
+	 
+}
+
+#instructionsCon{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+ 	
+}
+
+#instructions{
+	font-size: 20px;
+	margin: 50px;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+
+
+	
+}
+
+#keyboard{
+	
+	filter: drop-shadow(4px 4px 5px gray)  ;
+}
