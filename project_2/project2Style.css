@@ -2,7 +2,11 @@
 body{
 	filter: drop-shadow(8px 8px 10px gray);
 	font-family: 'Arial'; 
+	margin:30px;
+
 }
+
+
 body, #backgroundContainer, #scoreTable{
 	display: flex;
 	flex-direction: column;
@@ -10,6 +14,61 @@ body, #backgroundContainer, #scoreTable{
 	justify-content: center;
 
 }
+#titlePage{
+	width:1000px;
+	height: 700px;
+	background-image: url('water.jpg');
+	background-size:cover;
+	color: white;
+	font-family: Georgia;
+	letter-spacing: 5px;
+	font-size: 30px;
+	text-align: center;
+ 
+
+}
+#titleText{
+	 position: relative;
+}
+
+#titleDescription{
+	position: relative;
+	font-style: italic;
+}
+
+#meetCon{
+	position:relative;
+	display:none;
+}
+ 
+#meetButton{
+	border: 0 none;
+	border-radius: 5px;
+
+	 font-size: 30px;
+	 background-color: white;
+	 opacity:1;
+	 padding:10px;
+}
+
+#meetButton:hover{
+	 
+	opacity:0.5;
+	 cursor: pointer;
+}
+
+#titleText, #titleDescription, #meetCon{
+	left: 0;
+    line-height: 200px;
+    margin: auto;
+    margin-top: -100px;
+    top: 50%;
+    width: 100%;
+	filter: drop-shadow(4px 4px 5px black)  ;
+ 	 
+}
+ 
+
 #customChar, #characterCanvas{
 	width: 1000px;
 
@@ -24,7 +83,22 @@ body, #backgroundContainer, #scoreTable{
 	height: 200px;
 	background-color: rgba(255,232,117,1);
 	display: flex;
+	flex-direction: column; 
+	align-items: center;
+	justify-content: space-evenly;
+
+	
+}
+
+#charOptionsCon{
+	display: flex;
 	flex-direction: row; 
+	justify-content: space-evenly;
+	background-color: white;
+	border-radius: 5px;
+	margin-top: 5px;
+	filter: drop-shadow(4px 4px 5px grey)  ;
+
 }
 
 #customGui{
@@ -32,22 +106,48 @@ body, #backgroundContainer, #scoreTable{
 	flex: column;
 }
 
-.charProperty{
+.playBtn{
+		border: 0 none;
+	border-radius: 5px;
+	 font-size: 15px;
+	 background-color: white;
+	 opacity:1;
+	 padding:10px;
+	 margin-top:10px;
+	 filter: drop-shadow(4px 4px 5px gray);
+}
 
+.playBtn:hover{
+	opacity:0.5;
+	 cursor: pointer;
+}
+
+#goPlay{
+	margin-top:5px;
+	margin-bottom: 10px
+}
+.charProperty{
 	border-radius:5px;
 	color: #1F2041;
 	opacity: 0.9;
  	background-color: white;
-	padding: 15px;
-	margin: 22px;
+	margin: 15px;
 	display: flex; 
 	flex-direction: column;
 	align-items: center;
+	height: 100px;
 
+	display: flex;
+	flex-direction: column;
+}
+
+#navTool{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 label{
-	margin-bottom: 2px;
 	font-weight: bold;
 }
 .colorOption{
@@ -59,13 +159,14 @@ label{
 	height: 500px;
 	background-color: lightgrey;
 	background-image: url("water.jpg");
+	background-size:cover;
 	 
 }
 
 th{
 	margin:10px;
 	padding:20px;
- 	background-color: rgba(111,138,183, 0.5);
+ 	background-color: rgba(110,168,200, 0.7);
  	color: gold;
 }
 td{
@@ -82,7 +183,6 @@ td{
 	font-family: 'Arial'; 
 	font-size: 35px;
 
-
 } 
 
 #userScore{
@@ -95,34 +195,40 @@ td{
 	width:1000px;
 	height: 200px;
 	display: flex;
-	flex-direction: row; 
+	flex-direction: column; 
 	justify-content: center;
 	 
 }
 
-#instructionsCon{
+#gameNav{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+}
 
- 	
+#btn1, #btn2, #btn3, #btn4{
+	margin: 10px;
+}
+#instructionsCon{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center; 	
 }
 
 #instructions{
 	font-size: 20px;
-	margin: 50px;
+	margin: 20px;
 	align-items: center;
 	justify-content: center;
-	text-align: center;
-
-
-	
+	text-align: center;	
 }
 
 #keyboard{
-	
-	filter: drop-shadow(4px 4px 5px gray)  ;
+	 max-width: 100px;
+    max-height: 100px;
+	filter: drop-shadow(4px 4px 5px gray);
 }
 
 #thanks{
@@ -132,3 +238,29 @@ td{
 	justify-content: center;
 	text-align: center;
 }
+
+#lowestBar{
+	height:20px;
+	width:1000px;
+	background-color: lightgrey;
+	color:white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background-color: rgba(211,211,211,0.3);
+	padding:5px;
+	
+}
+
+#lowestBar a{
+	text-decoration: none;
+	color:grey;
+	opacity:0.7;
+}
+#lowestBar a:hover{
+	cursor:pointer;
+	color:white;
+}
+
+ 

@@ -1,232 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Project 2</title>
+<title> Platypus Playdate</title>
  <link href="project2Style.css" rel="stylesheet">
 <script type="text/javascript" src="cookie.js"></script>
 </head>
-<body onchange ="customPlatypus()" onload ="customPlatypus()">
-<div id = "customGUI"> 
-	<canvas id = "characterCanvas">	</canvas>
-	<script>
-	var myGamePiece;
-	var waterImg = new Image(); 
-	waterImg.src = 'water.jpg'; 
-
-	function customPlatypus() {
-	    myGameArea.start();
-	    var bodyHex = "#43D8C2"; 
-	    var beakHex = "gold"; 
-	    var eyeHex = "black"; 
-	    var tailHex = "#835C3B"; 
-	    var eyeRad = 5; 
-	    var firstName = "Perry"; 
-	    var lastName = "The Platypus";
-
-	    if(cookieExists("bodyColor")){
-	    	bodyHex=getCookie("bodyColor") 
-	    }
-	    if(cookieExists("beakColor")){
-	    	beakHex = getCookie("beakColor"); 
-	    }
-	    if (cookieExists("eyeColor")){
-	    	eyeHex = getCookie("eyeColor");
-	    }
-	    if(cookieExists("tailColor")){
-	    	tailHex = getCookie("tailColor"); 
-	    }
-	    if(cookieExists("eyeSize")){
-	    	var eyeStringSize = getCookie("eyeSize"); 
-	    	if(eyeStringSize == "small"){
-	    		eyeRad = 5; 
-	    	}else if(eyeStringSize == "medium"){
-	    		eyeRad = 10; 
-	    	}else if (eyeStringSize == "large"){
-	    		eyeRad = 15; 
-	    	}else if (eyeStringSize == "extraLarge"){
-	    		eyeRad = 20; 
-	    	}
-	    }
-	    if (cookieExists("firstName")){
-	    	firstName = getCookie("firstName");
-	    }else{
-	    	setCookie('firstName', 'Perry');
-	    }
-	    if (cookieExists("lastName")){
-	    	lastName = getCookie("lastName");
-	    }else{
-	    	setCookie('lastName', ' The Platypus');
-	    }
-	    myGamePiece = new component(400, 200, 300, 90, bodyHex, beakHex, eyeHex, tailHex, eyeRad, firstName, lastName);
-
-	    setIndicators(bodyHex, beakHex, eyeHex, tailHex, eyeRad, firstName, lastName)
-	}
-
-	function setIndicators(bodyHex, beakHex, eyeHex, tailHex, eyeRad, firstName, lastName){
-
-
-		document.getElementById('bodyColor_'+bodyHex).checked = 'checked';
-		document.getElementById('beakColor_'+beakHex).checked = 'checked';
-		document.getElementById('eyeColor_'+eyeHex).checked = 'checked';
-		document.getElementById('tailColor_'+tailHex).checked = 'checked'; 
-		if(eyeRad == 5){
-			document.getElementById("eyeSelect").value  = 'small';
-		}else if(eyeRad == 10){
-			document.getElementById("eyeSelect").value  = 'medium';
-		}else if(eyeRad == 15){
-			document.getElementById("eyeSelect").value  = 'large';
-		}else{
-			document.getElementById("eyeSelect").value  = 'extraLarge';
-		}
-		
-		document.getElementById('fName').value = firstName;
-		document.getElementById('lName').value = lastName;
-	}
-
-	var myGameArea = {
-	    canvas : document.getElementById("characterCanvas"),
-	    start : function() {
-	        this.canvas.width = 1000;
-	        this.canvas.height = 500;
-	        this.context = this.canvas.getContext("2d");
-	        if(!cookieExists('firstName')){
-				saveChoice('firstName', 'Perry'); 
-	        }
-	        if(!cookieExists('lastName')){
-	        	saveChoice('lastName', 'The Platypus');
-	        }
-	        
-	         
-
-	        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-	        
-	    }
-	}
-
-		function component(x, y, w, h, bodyColor, beakColor, eyeColor, tailColor, eyeSize, firstName, lastName){
-			this.startX = x;
-			this.startY = y; 
-			this.width = w; 
-			this.height = h;   
-			this.eyeSize = eyeSize; 
-			var eyeX = this.width/4*3;
-			var eyeY = this.height/2; 
-			var tailY = this.height/2;
-			var tailX = this.width*2/3; 
-			var beakY = this.height/4*3;
-			var beakHeightY = this.height/4; 
-			var beakWidth = this.width/4; 
-
-			ctx = myGameArea.context; 
-			ctx.drawImage(waterImg, 0, 0, 1000, 500);
-			ctx.beginPath();
-			ctx.rect(this.startX, this.startY, this.width, this.height);//x, y,width,height
-			ctx.fillStyle = bodyColor;
-			ctx.fill();
-			ctx.beginPath();
-			ctx.arc(this.startX + eyeX, this.startY+eyeY, this.eyeSize ,0,2*Math.PI);
-			ctx.fillStyle = eyeColor;
-			ctx.fill();
-			ctx.beginPath();
-		 	ctx.rect(this.startX-tailX, this.startY+tailY, tailX, tailY);
-		 	ctx.fillStyle = tailColor;
-			ctx.fill();
-			ctx.beginPath();
-			ctx.rect(this.startX+this.width, this.startY+beakY, beakWidth, beakHeightY);
-			ctx.fillStyle = beakColor;
-			ctx.fill();
-			ctx.font= "40px Georgia";
-			ctx.fillStyle = "White";
-			ctx.textAlign ="center";
-			ctx.fillText("Hello, my name is " + firstName + " "+ lastName +"!" ,500,this.startY+this.startY+20);
-		}
-	</script> 
-
-	<script>
-		// This function will save the user's choice in a cookie
-		function saveChoice(property, value) {
-			setCookie(property, value);
-			console.log(value);
-		}
-
-		function eyeRadValue(){
-			var selectBox = document.getElementById("eyeSelect");
-    		var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-			return selectedValue;
-		}
-
-		function nameValue(namePos){
-			if(namePos == 'first'){
-				return document.getElementById('fName').value;
-
-			}else{
-				return document.getElementById('lName').value;
-			}
-		}
-
-		function changeName(){
-			saveChoice('firstName', nameValue('first'));
-			saveChoice('lastName', nameValue('last'));
-		}
-
- 
-	</script>
-	<form id = "customChar" name ="customChar" method = "get"> 
-		<div class = "charProperty"> 	
-			<b> First name </b> <br>
-			  <input id = 'fName' type="text" name="firstname"  value = "" oninput="saveChoice('firstName', nameValue('first'));" >
-			  <br>
-			  <b> Last name </b> <br>
-			  <input  id = 'lName' type="text" name="lastname" value ="" oninput="saveChoice('lastName', nameValue('last'))" >
-		 
-			  <br> 
-			  
-		</div>
-		<div class = "charProperty">
-			<label for = "eyeSize"> Eye Size </label>
-			<select id = "eyeSelect" name = "eyeSize" onchange = "saveChoice('eyeSize', eyeRadValue())">
-				<option value="small"  >Small</option>
-				<option value="medium" >Medium</option>
-				<option value="large" >Large</option>
-				<option value="extraLarge" >Extra Large</option>
-			</select>
-		</div>
-
-		<div class = "charProperty">
-			<label for = "eyeColor"> Eye Color </label> 
-			<div class = "colorOption"> Black <input id = "eyeColor_black" type="radio" name="eyeColor" value="black" onclick = "saveChoice('eyeColor', 'black')"> </div>
-			<div class = "colorOption"> Pink <input id ="eyeColor_pink" type="radio" name="eyeColor" value="pink" onclick = "saveChoice('eyeColor', 'pink')"> </div> 
-			<div class = "colorOption" onclick = "saveChoice('eyeColor', '#43D8C2')"> Teal <input id = "eyeColor_#43D8C2" type="radio" name="eyeColor" value="#43D8C2" > </div>
-			<div class = "colorOption"> White <input id ="eyeColor_white" type="radio" name="eyeColor" value="white" onclick = "saveChoice('eyeColor', 'white')"> </div> 
-		</div>
-
-		<div class = "charProperty">
-			<label for = "bodyColor"> Body Color </label> 
-			<div class = "colorOption"> Black <input id = "bodyColor_black" type="radio" name="bodyColor" value="black" onclick = "saveChoice('bodyColor', 'black')"> </div>
-			<div class = "colorOption" onclick = "saveChoice('bodyColor', '#835C3B')"> Brown <input id ="bodyColor_#835C3B" type="radio" name="bodyColor" value="#835C3B" > </div>
-			<div class = "colorOption"> Pink <input  id ="bodyColor_pink" type="radio" name="bodyColor" value="pink" onclick = "saveChoice('bodyColor', 'pink')"> </div> 
-			<div class = "colorOption" onclick = "saveChoice('bodyColor', '#43D8C2')"> Teal <input id ="bodyColor_#43D8C2" type="radio" name="bodyColor" value="#43D8C2" > </div>
-		</div>
-
-		<div class = "charProperty">
-			<label for = "tailColor"> Tail Color </label> 
-			<div class = "colorOption"> Black <input id = 'tailColor_black' type="radio" name="tailColor" value="black" onclick = "saveChoice('tailColor', 'black')"> </div>
-			<div class = "colorOption" onclick = "saveChoice('tailColor', '#835C3B')"> Brown <input id = 'tailColor_#835C3B' type="radio" name="tailColor" value="#835C3B" > </div>
-			<div class = "colorOption"> Pink <input id = 'tailColor_pink' type="radio" name="tailColor" value="pink" onclick = "saveChoice('tailColor', 'pink')"> </div> 
-			<div class = "colorOption" onclick = "saveChoice('tailColor', '#43D8C2')"> Teal <input id = 'tailColor_#43D8C2' type="radio" name="tailColor" value="#43D8C2" > </div>
-		</div>
-
-		<div class = "charProperty">
-			<label for = "beakColor"> Beak Color: </label> 
-			<div class = "colorOption" onclick = "saveChoice('beakColor', '#835C3B')"> Brown <input id = 'beakColor_#835C3B' type="radio" name="beakColor" value="#835C3B" > </div>
-			<div class = "colorOption" onclick = "saveChoice('beakColor', 'gold')"> Gold <input id = 'beakColor_gold' type="radio" name="beakColor" value="gold" > </div>
-			<div class = "colorOption" onclick = "saveChoice('beakColor', 'pink')"> Pink <input id = 'beakColor_pink' type="radio" name="beakColor" value="pink" > </div>
-			<div class = "colorOption" onclick = "saveChoice('beakColor', 'yellow')"> Yellow <input id = 'beakColor_yellow' type="radio" name="beakColor" value="yellow" > </div>
-			
-		</div>
-
+<body onload = "typeWriter()">
+	<div id ='titlePage'> 
+	<h1 id ='titleText' >
+	</h1>  
+	<div id = 'titleDescription'></div>
+	<div id = 'meetCon'>
+	<form action = 'customize.html'>
+		<input type = 'submit' id = 'meetButton' value = 'Meet Your Platypus'>  
 	</form>
+	</div>
+	</div>
 
- 
+<script> 
+	var titleContent = "Platypus Playdate";
+	var speed = 150; 
+	var i =0; 
+	var titleDone = false; 
+
+	function typeWriter(){
+		if (i < titleContent.length){
+			document.getElementById('titleText').innerHTML += titleContent.charAt(i); 
+			i++; 
+			setTimeout(typeWriter,speed); 
+		}
+			if(i == titleContent.length){
+		 window.setTimeout(writeSubtitle, 300);
+
+		 }
+	}
+
+	function writeSubtitle(){
+		 document.getElementById('titleDescription').innerHTML = 'an immersive experience with your own platypus';
+		window.setTimeout(showButton, 350);
+	}
+
+	function showButton(){
+		 document.getElementById('meetCon').style.display = "block";
+	}
+	 
+</script>
+<div id ='lowestBar'>
+		<a href ='contact.html'> Contact Us </a>
+	</div>
 </body>
 </html>

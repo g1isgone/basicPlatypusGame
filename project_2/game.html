@@ -245,16 +245,16 @@
 		function updateGameArea() {		
 			var passedTime = new Date().getTime() - startTime; 	 
 
-			if( passedTime > 10000){
+			if( passedTime > 60000){
 				ocean.stop()
 				setScore();
-				// var retVal = confirm('Your Score: ' + eatenShells.length.toString() + ". Replay?" ); 
+				var retVal = confirm('Your Score: ' + eatenShells.length.toString() + ". Replay?" ); 
 
-				// if(retVal){
-				// 	location.reload();
-				// }else{
-				// 	window.location.href = "scoreboard.html";
-				// }
+				if(retVal){
+					location.reload();
+				}else{
+					window.location.href = "scoreboard.html";
+				}
 			}
 				   
 			ocean.clear();
@@ -323,11 +323,24 @@
 		 
 	</script> 
  
- 	<div id  = "lowerBar">		
+ 	<div id  = "lowerBar">	
+ 	 	
  		<div id = 'instructionsCon'> 
- 			<div id ='instructions'> Press the 'up' and 'down' arrow of your keyboard to move <div id ="charName"></div><script> var charName = getCookie('firstName') + " " + getCookie('lastName') +" "; document.getElementById("charName").innerHTML = charName; </script> up and down. Eat as many shells you can in one minute. </div>
+ 			<div id ='instructions'> Press the 'up' and 'down' arrow of your keyboard to move <div id ="charName"></div><script> var charName = getCookie('firstName') + "." + getCookie('lastName') +"."; document.getElementById("charName").innerHTML = charName; </script> Eat as many shells you can in one minute. </div>
   			<img id = "keyboard" src = 'keyboard.png'> 
  		</div>
- 		</div>
+ 		<div id = 'gameNav'>
+ 		 <form action = 'customize.html'> 
+		<input type = 'submit'  id ='btn1' class = 'playBtn' value = 'Re-Customize Your Platypus'>  
+		</form>
+		<form action = 'scoreboard.html' > 
+		<input type = 'submit'  id = 'btn2' class = 'playBtn' value = 'View Score Board'>  
+		</form>
+		</div>
+	</div>
+ 	<div id ='lowestBar'>
+		<a href ='contact.html'> Contact Us </a>
+	</div>
+
 </body>
 </html>
