@@ -2,8 +2,7 @@
 body{
 	filter: drop-shadow(8px 8px 10px gray);
 	font-family: 'Arial'; 
-	margin:30px;
-
+	margin:5px;
 }
 
 
@@ -101,10 +100,7 @@ body, #backgroundContainer, #scoreTable{
 
 }
 
-#customGui{
-	display: flex; 
-	flex: column;
-}
+
 
 .playBtn{
 		border: 0 none;
@@ -166,14 +162,16 @@ label{
 th{
 	margin:10px;
 	padding:20px;
- 	background-color: rgba(110,168,200, 0.7);
- 	color: gold;
+ 	background-color: white;
+ 	background-color: rgba(0,0,255, 0.5);
+ 	color: white;
 }
 td{
 	padding: 10px;
 	text-align: center;	 
 	margin:10px;
 	background-color: rgba(202,229,255, 0.5);
+	color:navy;
 	 
 }
 
@@ -182,11 +180,12 @@ td{
 	width: 800px;
 	font-family: 'Arial'; 
 	font-size: 35px;
+	filter: drop-shadow(4px 4px 5px grey);
 
 } 
 
 #userScore{
-	background-color: white;
+	background-color: rgba(0,0,200, 0.2);
 }
 
 #lowerBar{
@@ -207,7 +206,7 @@ td{
 	justify-content: center;
 }
 
-#btn1, #btn2, #btn3, #btn4{
+#btn1, #btn2, #btn3, #btn4, #btn5{
 	margin: 10px;
 }
 #instructionsCon{
@@ -240,7 +239,7 @@ td{
 }
 
 #lowestBar{
-	height:20px;
+	height:15px;
 	width:1000px;
 	background-color: lightgrey;
 	color:white;
@@ -257,10 +256,86 @@ td{
 	text-decoration: none;
 	color:grey;
 	opacity:0.7;
+	padding: 5px;
+}
+
+#lowestBar div{
+	color:grey;
+	opacity:0.7;
+	padding: 5px;
 }
 #lowestBar a:hover{
 	cursor:pointer;
 	color:white;
 }
 
- 
+
+
+#genericCon{
+	width: 1000px;
+	height: 500px;
+	background-color: lightgrey;
+	background-image: url("water.jpg");
+	background-size:cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+}
+
+#bioCon, #projDocCon{
+	background-color: rgba(110,168,200, 0.3);
+	filter: drop-shadow(4px 4px 5px black);
+}
+
+#creatorCon, #projectCon{
+	width:800px;
+	height: 200px;
+	color:white;
+	display: flex;
+	flex-direction: wrap; 
+	padding: 10px;
+}
+
+
+#creator{
+	float:left;
+	max-width: 100%;
+    max-height: 100%;
+     
+}
+
+#creatorBio, #projText{
+	margin: 5px;
+	padding-left: 5px;
+	letter-spacing: 2px;
+
+}
+
+#projectCon{
+	overflow: auto;
+}
+
+#creatorHead, #projectHead{
+	color:white;
+	padding-left: 10px;
+}
+
+.sepLink{
+	text-decoration: none;
+	color: gold;
+}
+
+.sepLink:hover{
+	opacity:0.7;
+}
+
+#inactiveLink {
+  	font-style: italic;
+}
+
+li{
+	padding: 5px 5px 20px 20px;
+}
+

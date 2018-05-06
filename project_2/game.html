@@ -3,12 +3,16 @@
 <head>
 <title> Project 2</title>
  <link href="project2Style.css" rel="stylesheet">
-<script type="text/javascript" src="cookie.js"></script>
+<script type="text/javascript" src="cookie.js">
+	window.addEventListener("keydown", function(e) {
+    // space and arrow keys
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);
+</script>
 </head>
 <body onload ="startGame()">
-
- 
-<div id = "customGUI"> 
 	<canvas id = "characterCanvas">	</canvas>
 	<script>
 	var platypusCharacter;
@@ -324,23 +328,25 @@
 	</script> 
  
  	<div id  = "lowerBar">	
- 	 	
  		<div id = 'instructionsCon'> 
- 			<div id ='instructions'> Press the 'up' and 'down' arrow of your keyboard to move <div id ="charName"></div><script> var charName = getCookie('firstName') + "." + getCookie('lastName') +"."; document.getElementById("charName").innerHTML = charName; </script> Eat as many shells you can in one minute. </div>
+ 			<div id ='instructions'> Press the 'up' and 'down' arrow of your keyboard to move <div id ="charName"></div><script> var charName = getCookie('firstName') + " " + getCookie('lastName') +"."; document.getElementById("charName").innerHTML = charName; </script> Eat as many shells you can in one minute. </div>
   			<img id = "keyboard" src = 'keyboard.png'> 
  		</div>
  		<div id = 'gameNav'>
  		 <form action = 'customize.html'> 
-		<input type = 'submit'  id ='btn1' class = 'playBtn' value = 'Re-Customize Your Platypus'>  
+		<input type = 'submit'  id ='btn1' class = 'playBtn' value = 'Customize Your Platypus'>  
 		</form>
 		<form action = 'scoreboard.html' > 
-		<input type = 'submit'  id = 'btn2' class = 'playBtn' value = 'View Score Board'>  
+		<input type = 'submit'  id = 'btn2' class = 'playBtn' value = 'Score Board'>  
 		</form>
 		</div>
 	</div>
- 	<div id ='lowestBar'>
+	<div id ='lowestBar'>
+		<a href ='index.html'> Title Page </a>
+		<div> | </div>
+		<a href ='projectDoc.html'> Project 2 Design Documentation </a>
+		<div> | </div>
 		<a href ='contact.html'> Contact Us </a>
 	</div>
-
 </body>
 </html>

@@ -6,7 +6,7 @@
 <script type="text/javascript" src="cookie.js"></script>
 </head>
 <body onchange ="customPlatypus()" onload ="customPlatypus()">
-<div id = "customGUI"> 
+ 
 	<canvas id = "characterCanvas">
 	</canvas>
 	<script>
@@ -220,7 +220,7 @@
 		</div>
 
 		<div class = "charProperty">
-			<label for = "beakColor"> Beak Color: </label> 
+			<label for = "beakColor"> Beak Color </label> 
 			<div class = "colorOption" onclick = "saveChoice('beakColor', '#835C3B')"> Brown <input id = 'beakColor_#835C3B' type="radio" name="beakColor" value="#835C3B" > </div>
 			<div class = "colorOption" onclick = "saveChoice('beakColor', 'gold')"> Gold <input id = 'beakColor_gold' type="radio" name="beakColor" value="gold" > </div>
 			<div class = "colorOption" onclick = "saveChoice('beakColor', 'pink')"> Pink <input id = 'beakColor_pink' type="radio" name="beakColor" value="pink" > </div>
@@ -230,8 +230,13 @@
 	</div>
 	<input type = 'submit' id = 'goPlay' class = 'playBtn' value = 'Feed Your Platypus'>  
 </form>
-<div id ='lowestBar'>
+	<div id ='lowestBar'>
+		<a href ='index.html'> Title Page </a>
+		<div> | </div>
+		<a href ='projectDoc.html'> Project 2 Design Documentation </a>
+		<div> | </div>
 		<a href ='contact.html'> Contact Us </a>
+
 	</div>
  
 </body>

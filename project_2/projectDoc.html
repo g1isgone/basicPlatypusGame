@@ -6,16 +6,55 @@
 <link href="project2Style.css" rel="stylesheet">
 <script type="text/javascript" src="cookie.js"></script>
 </head>
-<body  ">
-	<div id = "backgroundContainer"> 
+<body >
+	 
+ 	<div id ='genericCon'>
+ 		<div id ='projDocCon'>
+ 		<h1 id ='projectHead'> Project Documentation </h1>
+ 		<div id = 'projectCon'>
+ 			<div id ='projText'>
+ 				<div> <b> Forms </b> 
+ 					<li> Mainly purposed such that the user can customize their own platypus for the game. Used various ways of input to allow flexibility and variety in character customization. Previously selected or default inputs are pre-filled on the customization as well: <a class ='sepLink' href = "customize.html"> view </a>
+ 					</li>
+ 					<li>  Used throughout the website as submit buttons to navigate between different to different parts of the games: <a class ='sepLink' href = "scoreboard.html"> view </a>
+ 					</li>
+ 				</div>
+ 				<div> <b> Cookies </b>
+ 					<li>
+ 					Used throughout the game such that user's customization of the platypus could be saved. Pre-existing customizations are also loaded with the cookie. Name, colors, and sizes of the platypus was saved. In addition, to create the score board, the top 3 scores in addition to the user's score was saved. <a class ='sepLink' href = "scoreboard.html"> view 1 </a> <a class ='sepLink' href = "customize.html"> view 2 </a>
+ 					 <a class ='sepLink' href = "game.html"> view 3 </a>
+ 					</li>
+ 				</div>
+ 				<div> <b> Interaction </b>
+ 				 
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+ </div>
  
-	</div>
 	<div id  = "lowerBar"> 
-		<div id ='helpBox'>
-		 </div>
+	 		<div id = 'gameNav'>
+ 		 <form action = 'customize.html'> 
+		<input type = 'submit'  id ='btn1' class = 'playBtn' value = 'Customize Your Platypus'>  
+		</form>
+		<form action = 'game.html' > 
+		<input type = 'submit'  id = 'btn2' class = 'playBtn' value = 'Feed Platypus'>  
+		</form>
+				<form action = 'scoreboard.html' > 
+		<input type = 'submit'  id = 'btn4' class = 'playBtn' value = 'Score Board'>  
+		</form>
+ 
+
+		</div>
 	</div>
 	<div id ='lowestBar'>
+		<a href ='index.html'> Title Page </a>
+		<div> | </div>
+		<div id ='inactiveLink' href ='projectDoc.html'> Project 2 Design Documentation </div>
+		<div> | </div>
 		<a href ='contact.html'> Contact Us </a>
+
 	</div>
 </body>
 </html>
