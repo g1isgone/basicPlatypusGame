@@ -13,6 +13,7 @@
  		<h1 id ='projectHead'> Project Documentation </h1>
  		<div id = 'projectCon'>
  			<div id ='projText'>
+ 				<div> <h2> The purpose of this website is for the user to relax by having fun with a platypus. This website is a highly-interactive game interface in which the user can customize his or her own platypus character and use it to play games. The website keeps track of the highest scores on the user's computer. </h2></div>
  				<div> <b> Forms </b> 
  					<li> Mainly purposed such that the user can customize their own platypus for the game. Used various ways of input to allow flexibility and variety in character customization. Previously selected or default inputs are pre-filled on the customization as well: <a class ='sepLink' href = "customize.html"> view </a>
  					</li>
@@ -26,8 +27,72 @@
  					</li>
  				</div>
  				<div> <b> Interaction </b>
- 				 
+ 					<li> The main form of interaction is via the platypus customization,  platypus feeding game, and score board: 
+ 					 <a class ='sepLink' href = "customize.html"> view 1 </a>
+ 					 <a class ='sepLink' href = "game.html"> view 2 </a>
+ 					</li>
+ 					<a class ='sepLink' href = "scoreboard.html"> view 3 </a>
+ 					</li>
+ 					<li>
+ 						The bottom of the page also includes a navigation bar for parts of the website irrelevant to the game. A nice effect is the rollovers that change the text color to white. The page that the user is on is indicated with italics and cannot be clicked on.
+ 					</li>
+ 					<li>
+ 						Buttons take you to different parts of the games: <a class ='sepLink' href = "scoreboard.html"> view 1</a> This is different from a navbar in the sense that all pages will not have buttons do different parts of the game. The reason is to provide a more step by step feel to the game as opposed to a website: <a class ='sepLink' href = "index.html"> view 2 </a>
+ 					</li>
  				</div>
+ 				<div> <b> User Feedback </b>
+ 					<li> The entire website is designed to be responsive to the user. When a user hovers over a button, the cursor changes to a pointer and the button also changes opacity. When a user hovers over a clickable link in the navbar, the text changes to white. </li>
+ 					<li> The score board is a notable example of user feedback because it will denote the user scores and the previous user's scores stored in the cookie: <a class ='sepLink' href = "scoreboard.html"> view </a>
+ 					</li>
+ 					<li> At the end of the game, the game also asks the user if the user would like to replay the game or not. If the user says no it directs the user automatically to the scoreboard, else it reloads the page so the user can play again: <a class ='sepLink' href = "game.html"> view </a>
+ 					</li>
+ 					<li>
+ 						The website design is made such that it will always be centered in the screen so the user can play it on different screens. However, the game does need a specific size on the screen to play the game or the game will be cut off. 
+ 					</li>
+ 					<li> The game includes many elements of user feedback. It tells you how much shells have been eaten, how much time is left, and the sounds tell you if you have eaten a shell. In addition, the instructions has an image designed specifically to demonstrate which arrows to click: <a class ='sepLink' href = "game.html"> view </a> 
+ 					</li>
+ 				</div>
+ 				<div> <b> Canvas Graphics </b>
+ 					<li>
+ 						The canvas graphics was used mainly to create the game and customize the platypus. It is somewhat of a complex game that is heavily JavaScript based. The purpose of the game is so that the user can interact with the platypus. In the game, random shells are headed towards the platypus for the platypus to eat. There exists a timer, a text with the platypus' first name, and a count of how many shells were eaten on the top right. In the top right there are 0 shells if the platypus has eaten zero of them: <a class ='sepLink' href = "game.html"> view 1 </a> <a class ='sepLink' href = "customize.html"> view 2 </a>
+ 					</li>
+ 				</div>
+ 				
+ 				<div> <b> Multimedia </b>
+ 					<li> This project uses a shell-crunching sound effect to indicate that the platypus has eaten a shell, Sometimes if too many multiple shells overlap the sounds may not occur, but the score on the top right accurately reflexts the number of shells eaten: <a class ='sepLink' href = "game.html"> view </a> </li>
+ 				</div>
+ 				<div><b> Structured Layout </b>
+ 					<li>The layout is very structured in that the view of the pags are all in the center and the sizes of the interface does not change from page to page. There is some variation within the nav bars, but the overall sizs of the pages remain constant. The use of flex boxes help keep the pages organized. </li>
+ 				</div>
+ 				<div> <b> JavaScript </b>
+ 				<li>
+ 				The use of JavaScript is mainly for the development of the game, setting the cookies, navigating through pages via forms, updating the scoreboard, and customizing the platypus. </li>
+ 				<li>The title page has a cool animation that happens only when its load such that it isn't annoying to the user. It types out the title and gives a brief introduction to the game. A button also appears for the user to start interacting with the character:  <a class ='sepLink' href = "index.html"> view </a></li>
+ 				<li> Within the game, JavaScript was heavily used to customize the characters and randomize the location of the shells, but keep them within the box. The platypus was not bounded within the box because it seemed obvious to the user where the platypus would have gone. Timers, cookies, and sorting algorithms were implemented via JavaScript: <a class ='sepLink' href = "game.html"> view </a> </li>
+ 				</li>
+ 				</div>
+ 				<div> <b> Images </b> 
+ 					<li> Images were used for the background so the platypus would seem like it's under water: <a class ='sepLink' href = "index.html"> view </a> </li>
+ 					</li>
+ 					<li> Images were also used in the game for the plate to indicate whether the platypus was being fed.  The shells were also an image. The keyboard was also an image used as a visualization to tell the user how to play the game: <a class ='sepLink' href = "game.html"> view </a> </li>  </li>
+ 				</div>
+ 				<div> <b> Links </b> 
+ 					<li> The navbar beneath the pages were all uses of links and the buttons as well: <a class ='sepLink'  href ="index.html"> view </a></li>
+ 					<li>
+ 						The email was also a link:  <a class ='sepLink'  href ="contact.html"> view </a> 
+ 					</li>
+ 				</div>
+ 				<div> <b> The stylesheets were made such that the thematic blue, yellow, and translucent water theme would be permeated throughout. The page sizes were all fixed. A variety of selectors were used as well:  
+ 					<a class ='sepLink'  href = "project2STyle.css"> Shell Eating Sound</a> </b> </div>
+ 				<div> <b> Sources </b>
+ 					<li> <a class ='sepLink'  href = "https://www.zapsplat.com/music/person-eat-crunch-on-lollypop-single-bite-2/"> Shell Eating Sound</a> </li>
+ 					<li> <a class ='sepLink'  href = "https://unsplash.com/search/photos/water?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Water Picture</a> </li>
+ 					<li> <a class ='sepLink'  href = "https://www.flaticon.com/">Shell, Cutlery, and Keyboard Picture</a> </li>
+ 					<li> <a class ='sepLink'  href ="https://www.w3schools.com/howto/howto_js_typewriter.asp"> Typewriter Effect </a></li>
+ 					<li> <a class ='sepLink'  href ="https://www.w3schools.com/graphics/game_components.asp"> Game Tutorial </a></li>
+ 				</div>
+
+
  			</div>
  		</div>
  	</div>
